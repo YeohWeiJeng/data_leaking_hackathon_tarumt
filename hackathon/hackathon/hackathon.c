@@ -125,7 +125,7 @@ void main() {
 	if (t.wHour < 7 || t.wHour > 20) // If out of working hour (07:00 - 20:00)
 	{
 		fprintf(logFile, "%02d-%02d-%d %02d:%02d - Someone try to login outside working hour\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
-		printf("Sorry, the working hour is from 7:00 to 20:00. You can't access to this system out of the working hour.\n");
+		printf("Sorry, the working hour is from 7:00 to 20:00. You can't access this system outside of the working hour.\n");
 		fclose(logFile);
 		exit(-1);
 	}
@@ -145,12 +145,30 @@ void main() {
 	}
 
 	printf("Please enter your password : ");
-	scanf("%s", password);
+	int i = 0;
+	char ch;
+	while (1) {
+		ch = getch();
+		if (ch == 13) { // Enter key
+			password[i] = '\0';
+			break;
+		}
+		else if (ch == 8) { // Backspace key
+			if (i > 0) {
+				i--;
+				printf("\b \b");
+			}
+		}
+		else if (i < 49) { // Limit input to 49 characters
+			password[i++] = ch;
+			printf("*");
+		}
+	}
 
 	if (strcmp(password, PASSWORD) != 0)
 	{
 		fprintf(logFile, "%02d-%02d-%d %02d:%02d - Someone entered a wrong password\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
-		printf("Wrong password. Please try again later.\n");
+		printf("\nWrong password. Please try again later.\n");
 		fclose(logFile);
 		exit(-1);
 	}
