@@ -1,5 +1,3 @@
 ﻿  hackathon.c
-C:\Users\User\source\repos\hackathon\hackathon\hackathon.c(65,3): warning C4013: 'gets' undefined; assuming extern returning int
-C:\Users\User\source\repos\hackathon\hackathon\hackathon.c(84,28): warning C4047: 'function': 'const char *' differs in levels of indirection from 'char [100][256]'
-C:\Users\User\source\repos\hackathon\hackathon\hackathon.c(84,22): warning C4024: 'strcspn': different types for formal and actual parameter 1
-  hackathon.vcxproj -> C:\Users\User\source\repos\hackathon\x64\Debug\hackathon.exe
+C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\hackathon\hackathon.c(65,3): warning C4013: 'gets' undefined; assuming extern returning int
+  hackathon.vcxproj -> C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\x64\Debug\hackathon.exe

@@ -81,7 +81,7 @@ void readFile(FILE* logFile)
 		i = total = 0;
 
 		while (fgets(buffer[i], MAX_LENGTH, fptr)) {
-			buffer[i][strcspn(buffer, "\r\n")] = '\0';
+			buffer[i][strcspn(buffer[i], "\r\n")] = '\0';
 			i++;
 			total = i;
 		}
