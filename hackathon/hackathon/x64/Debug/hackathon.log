@@ -1,4 +1,4 @@
 ﻿  hackathon.c
-C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\hackathon\hackathon.c(65,3): warning C4013: 'gets' undefined; assuming extern returning int
-C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\hackathon\hackathon.c(145,8): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\hackathon\hackathon.c(56,14): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\hackathon\hackathon.c(230,3): warning C4013: 'gets' undefined; assuming extern returning int
   hackathon.vcxproj -> C:\Users\User\Desktop\TARUMT\TAR UMT International Hackathon 2024\Data Leaking\data_leaking_hackathon_tarumt\hackathon\x64\Debug\hackathon.exe

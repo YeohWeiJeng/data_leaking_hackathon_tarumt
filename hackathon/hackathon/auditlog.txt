@@ -35,3 +35,4 @@
 14-05-2024 19:36 - list.txt had successfully encrypted
 14-05-2024 19:36 - list.txt had been decrypted
 14-05-2024 19:36 - list.txt had successfully encrypted
+19-05-2024 22:52 - Login activity detected
