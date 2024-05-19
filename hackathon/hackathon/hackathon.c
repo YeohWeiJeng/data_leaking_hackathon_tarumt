@@ -46,7 +46,7 @@ void decrypt(char buffer[][MAX_LENGTH], int total, char filename[], FILE* logFil
 		}
 		printf("%s\n", buffer[i]);
 	}
-	fprintf(logFile, "%02d-%02d-%d %02d:%02d - %s had been decrypted by key %d\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute, filename, key);
+	fprintf(logFile, "%02d-%02d-%d %02d:%02d - %s had been decrypted\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute, filename);
 	system("pause");
 }
 
