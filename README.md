@@ -46,5 +46,4 @@ We're students from TARUMT Diploma in Computer Science Year 1 Semester 3. This i
 
 5. User can check the audit log inside the auditlog.txt file.
 
-![image](https://github.com/YeohWeiJeng/data_leaking_hackathon_tarumt/assets/94060398/a2ca550e-1430-4718-bae3-fb9d6bf8571d)
-
+![image](https://github.com/YeohWeiJeng/data_leaking_hackathon_tarumt/assets/94060398/4925d7a1-8db6-4192-aa5c-0eea17c5712b)
