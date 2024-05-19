@@ -24,9 +24,9 @@ We're students from TARUMT Diploma in Computer Science Year 1 Semester 3. This i
 ## User Guide
 1. User will required to sign in with Staff ID and password.
 * User is unable to sign in if it is outside of the working hour (07:00 - 20:00)
-* There is only 1 staff in this system which has the Staff ID (S001) with password (abc123)
+* There is only 1 staff in this system which has the Staff ID (exp: S0001) with password (exp: eJ7%y9*Lv0!mZ^3r)
 
-![image](https://github.com/YeohWeiJeng/data_leaking_hackathon_tarumt/assets/94060398/8482dad0-76ca-4d3a-a57d-3b3db012c8dc)
+![image](https://github.com/YeohWeiJeng/data_leaking_hackathon_tarumt/assets/94060398/cd6ab0e8-ce58-4ff8-b508-5ea4d8e69911)
 
 2. Users need to enter a filename (without extension) for the encryption or decryption process.
 * If the filename that user entered is not found, an error message will be displayed and exit from the program.

@@ -5,12 +5,12 @@
 
 #pragma warning(disable:4996)
 
-#define STAFF_ID "S001"
-#define PASSWORD "abc123"
 #define MAX_LENGTH 256
 #define MAX_ROW 100
 
-//access controls -> limit the time to access the data
+typedef struct {
+	char staffID[10], password[50];
+}Staff;
 
 void encrypt(char buffer[][MAX_LENGTH], int total, char filename[], FILE* logFile) {
 	SYSTEMTIME t;
@@ -115,10 +115,12 @@ void main() {
 
 	FILE* logFile;
 	logFile = fopen("auditlog.txt", "a");
-
-	if (logFile == NULL)
+	FILE* staffFile;
+	staffFile = fopen("staff.bin", "rb");
+	int idFound = 0, pwFound = 0;
+	if (logFile == NULL || staffFile == NULL)
 	{
-		printf("\aCan't open auditlog.txt file\n");
+		printf("\aCan't open file\n");
 		exit(-1);
 	}
 
@@ -130,19 +132,11 @@ void main() {
 		exit(-1);
 	}
 
-	char staffID[10], password[50];
+	Staff s, input;
 
 	printf("Please enter your Staff ID : ");
 	rewind(stdin);
-	scanf("%s", staffID);
-
-	if (strcmp(staffID, STAFF_ID) != 0)
-	{
-		fprintf(logFile, "%02d-%02d-%d %02d:%02d - Someone entered a wrong Staff ID\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
-		printf("Wrong ID. Please try again later.\n");
-		fclose(logFile);
-		exit(-1);
-	}
+	scanf("%s", input.staffID);
 
 	printf("Please enter your password : ");
 	int i = 0;
@@ -150,7 +144,7 @@ void main() {
 	while (1) {
 		ch = getch();
 		if (ch == 13) { // Enter key
-			password[i] = '\0';
+			input.password[i] = '\0';
 			break;
 		}
 		else if (ch == 8) { // Backspace key
@@ -160,22 +154,36 @@ void main() {
 			}
 		}
 		else if (i < 49) { // Limit input to 49 characters
-			password[i++] = ch;
+			input.password[i++] = ch;
 			printf("*");
 		}
 	}
 
-	if (strcmp(password, PASSWORD) != 0)
+	fread(&s, sizeof(Staff), 1, staffFile);
+	while (!feof(staffFile)) {
+		if (strcmp(s.staffID, input.staffID) == 0) {
+			if (strcmp(s.password, input.password) == 0) {
+				fprintf(logFile, "%02d-%02d-%d %02d:%02d - Login activity detected\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
+				readFile(logFile);
+				pwFound++;
+			}
+			idFound++;
+		}
+		fread(&s, sizeof(Staff), 1, staffFile);
+	}
+	if (idFound == 0)
+	{
+		fprintf(logFile, "%02d-%02d-%d %02d:%02d - Someone entered a wrong Staff ID\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
+		printf("\nWrong ID. Please try again later.\n");
+		fclose(logFile);
+		exit(-1);
+	}
+	if (pwFound == 0)
 	{
 		fprintf(logFile, "%02d-%02d-%d %02d:%02d - Someone entered a wrong password\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
 		printf("\nWrong password. Please try again later.\n");
 		fclose(logFile);
 		exit(-1);
-	}
-	else
-	{
-		fprintf(logFile, "%02d-%02d-%d %02d:%02d - Login activity detected\n", t.wDay, t.wMonth, t.wYear, t.wHour, t.wMinute);
-		readFile(logFile);
 	}
 
 	fclose(logFile);
